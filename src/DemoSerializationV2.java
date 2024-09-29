@@ -1,15 +1,23 @@
 import java.io.*;
 
-public class DemoSerialization {
-    public static void main(String[] args) {
-        try {
-            User user = new User("abhijit", "sinha", 2, "mypass", 67.5);
-            System.out.println(user); // equivalent to user.toString()
+public class DemoSerializationV2 {
 
-            String file_name = "serialized_object.ser";
+    public static void main(String[] args) {
+
+        try {
+            SuperUser super_user = new SuperUser(
+                    "abhijit",
+                    "sinha",
+                    1,
+                    "mypass",
+                    67.5,
+                    "admin"
+            );
+
+            String file_name = "serialized_object_v2.ser";
             FileOutputStream fout = new FileOutputStream(file_name);
             ObjectOutputStream oout = new ObjectOutputStream(fout);
-            oout.writeObject(user);
+            oout.writeObject(super_user);
             oout.close();
             fout.close();
             System.out.println("User object is written to disk as " + file_name);
@@ -21,4 +29,5 @@ public class DemoSerialization {
             e.printStackTrace();
         }
     }
+
 }
